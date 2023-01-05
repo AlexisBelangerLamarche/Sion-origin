@@ -33,6 +33,10 @@
                             {
                                 "type": "origins:execute_command",
                                 "command": "playsound minecraft:entity.wither.spawn master @a ~ ~ ~"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tellraw @s {\"text\":\"Chaaaaaaaarge!\",\"color\":\"dark_red\",\"bold\":true}"
                             }
                         ]
                     }
@@ -80,6 +84,23 @@
             "compare_to": 0
         }
     },
+    "boom": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:explode",
+            "power": 5,
+            "destruction_type": "none",
+            "damage_self": false,
+            "create_fire": true
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
     "blockdestroying": {
         "type": "origins:action_over_time",
         "entity_action": {
@@ -112,6 +133,14 @@
                     "distance": 1,
                     "block": false,
                     "entity": true,
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:entity_type",
+                            "entity_type": "minecraft:item",
+                            "inverted": true
+                        }
+                    },
                     "bientity_action": {
                         "type": "origins:target_action",
                         "action": {
