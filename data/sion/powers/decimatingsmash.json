@@ -62,7 +62,8 @@
                                 "effect": {
                                     "effect": "minecraft:slowness",
                                     "duration": 10,
-                                    "amplifier": 255
+                                    "amplifier": 255,
+                                    "show_particles": false
                                 }
                             },
                             {
@@ -131,6 +132,10 @@
                                 "command": "playsound minecraft:block.stone_button.click_off master @a ~ ~ ~ 1 1"
                             },
                             {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:item.crossbow.loading_end master @a ~ ~ ~ 1 1"
+                            },
+                            {
                                 "type": "origins:change_resource",
                                 "resource": "*:*_resource",
                                 "change": -20
@@ -145,11 +150,15 @@
                             },
                             {
                                 "type": "origins:execute_command",
-                                "command": "execute as @e[tag=boom] at @s as @e[distance=0..2.9, type=!armor_stand] at @s run effect give @s instant_damage 1 1"
+                                "command": "execute as @e[tag=boom] at @s as @e[distance=0..2.9, type=!armor_stand] at @s run playsound minecraft:block.anvil.place master @a ~ ~ ~ 1 1"
                             },
                             {
                                 "type": "origins:execute_command",
-                                "command": "execute as @e[tag=boom] at @s as @e[distance=0..2.9, type=!armor_stand, type=!arrow] at @s run effect give @s slowness 4 255"
+                                "command": "execute as @e[tag=boom] at @s as @e[distance=0..2.9, type=!armor_stand] at @s run effect give @s instant_damage 1 2"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[tag=boom] at @s as @e[distance=0..2.9, type=!armor_stand, type=!arrow] at @s run effect give @s slowness 4 255 true"
                             },
                             {
                                 "type": "origins:execute_command",

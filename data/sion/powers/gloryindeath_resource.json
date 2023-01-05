@@ -19,22 +19,26 @@
                     {
                         "effect": "minecraft:slowness",
                         "duration": 40,
-                        "amplifier": 254
+                        "amplifier": 254,
+                        "show_particles": false
                     },
                     {
                         "effect": "minecraft:blindness",
                         "duration": 40,
-                        "amplifier": 10
+                        "amplifier": 10,
+                        "show_particles": false
                     },
                     {
                         "effect": "minecraft:speed",
                         "duration": 9999999,
-                        "amplifier": 3
+                        "amplifier": 3,
+                        "show_particles": false
                     },
                     {
                         "effect": "minecraft:strength",
                         "duration": 9999999,
-                        "amplifier": 1
+                        "amplifier": 1,
+                        "show_particles": false
                     }
                 ]
             },
