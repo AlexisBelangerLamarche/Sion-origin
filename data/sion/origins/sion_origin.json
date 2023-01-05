@@ -5,7 +5,8 @@
         "sion:gloryindeath",
         "sion:gloryindeath_resource",
         "sion:gloryindeath_reset",
-        "sion:gloryindeath_dot"
+        "sion:gloryindeath_dot",
+        "sion:decimatingsmash"
     ],
     "icon": {
         "item": "minecraft:crossbow"

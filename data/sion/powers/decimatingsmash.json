@@ -1,0 +1,177 @@
+{
+    "name": "Decimating smash",
+    "description": "Charge a powerful attack that hits in a cone in front of you that knock up and damages",
+    "type": "origins:multiple",
+    "drain": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_resource",
+            "change": -1
+        },
+        "interval": 5
+    },
+    "resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 20,
+        "hud_render": {
+            "should_render": true
+        }
+    },
+    "cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 200,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 3
+        }
+    },
+    "active": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_resource",
+                                "comparison": "<",
+                                "compare_to": 20
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_cooldown",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:block.stone_button.click_off master @a ~ ~ ~ 1 2"
+                            },
+                            {
+                                "type": "origins:apply_effect",
+                                "effect": {
+                                    "effect": "minecraft:slowness",
+                                    "duration": 10,
+                                    "amplifier": 255
+                                }
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_resource",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle wax_on ^ ^.3 ^5.9 0 0 0 1 3 force"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle wax_on ^2.9 ^.3 ^5.9 0 0 0 1 3 force"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle wax_on ^-2.9 ^.3 ^5.9 0 0 0 1 3 force"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle wax_on ^ ^.3 ^.1 0 0 0 1 3 force"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle wax_on ^2.9 ^.3 ^.1 0 0 0 1 3 force"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle wax_on ^-2.9 ^.3 ^.1 0 0 0 1 3 force"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle wax_on ^2.9 ^.3 ^3 0 0 0 1 3 force"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle wax_on ^-2.9 ^.3 ^3 0 0 0 1 3 force"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_resource",
+                                "comparison": "==",
+                                "compare_to": 20
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_cooldown",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:block.stone_button.click_off master @a ~ ~ ~ 1 1"
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_resource",
+                                "change": -20
+                            },
+                            {
+                                "type": "origins:trigger_cooldown",
+                                "power": "*:*_cooldown"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "summon armor_stand ^ ^1 ^3 {Invisible:0b,Tags:[\"boom\"]}"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[tag=boom] at @s as @e[distance=0..2.9, type=!armor_stand] at @s run effect give @s instant_damage 1 1"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[tag=boom] at @s as @e[distance=0..2.9, type=!armor_stand, type=!arrow] at @s run effect give @s slowness 4 255"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute as @e[tag=boom] at @s as @e[distance=0..2.9, type=!armor_stand, type=!arrow] at @s run data modify entity @s Motion set value [0.0d,1.0d,0.0d]"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "kill @e[tag=boom]"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 1,
+        "key": {
+            "key": "primary",
+            "continuous": true
+        },
+        "hud_render": {
+            "should_render": false
+        }
+
+    }
+}

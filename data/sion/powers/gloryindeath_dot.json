@@ -1,4 +1,5 @@
 {
+    "hidden": "true",
     "type": "origins:multiple",
     "dot": {
         "type": "origins:action_over_time",
