@@ -1,0 +1,16 @@
+{
+    "name": "Glory in Death",
+    "description": "Upon dying, you revive and gain movement speed and strength but lose health over time",
+    "type": "origins:prevent_death",
+    "condition": {
+        "type": "origins:resource",
+        "resource": "sion:gloryindeath_resource",
+        "comparison": "==",
+        "compare_to": 0
+    },
+    "entity_action": {
+        "type": "origins:change_resource",
+        "resource": "sion:gloryindeath_resource",
+        "change": 1
+    }
+}

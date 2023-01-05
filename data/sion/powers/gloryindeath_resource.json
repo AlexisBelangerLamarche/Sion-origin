@@ -1,0 +1,58 @@
+{
+    "type": "origins:resource",
+    "min": 0,
+    "max": 1,
+    "hud_render": {
+        "should_render": false
+    },
+    "max_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:heal",
+                "amount": 20
+            },
+            {
+                "type": "origins:apply_effect",
+                "effects": [
+                    {
+                        "effect": "minecraft:slowness",
+                        "duration": 40,
+                        "amplifier": 254
+                    },
+                    {
+                        "effect": "minecraft:blindness",
+                        "duration": 40,
+                        "amplifier": 10
+                    },
+                    {
+                        "effect": "minecraft:speed",
+                        "duration": 9999999,
+                        "amplifier": 3
+                    },
+                    {
+                        "effect": "minecraft:strength",
+                        "duration": 9999999,
+                        "amplifier": 1
+                    }
+                ]
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:item.goat_horn.sound.2 master @a ~ ~ ~"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:block.respawn_anchor.set_spawn master @a ~ ~ ~"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:crimson_spore ~ ~ ~ 0.5 0.5 0.5 0 100 force"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "particle minecraft:small_flame ~ ~ ~ 0.3 1 0.3 0 50 force"
+            }
+        ]
+    }
+}
