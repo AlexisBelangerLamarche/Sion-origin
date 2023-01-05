@@ -36,7 +36,7 @@
                             },
                             {
                                 "type": "origins:execute_command",
-                                "command": "tellraw @s {\"text\":\"Chaaaaaaaarge!\",\"color\":\"dark_red\",\"bold\":true}"
+                                "command": "tellraw @a {\"text\":\"Chaaaaaaaarge!\",\"color\":\"dark_red\",\"bold\":true}"
                             }
                         ]
                     }
