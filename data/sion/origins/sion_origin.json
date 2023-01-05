@@ -10,7 +10,7 @@
         "sion:unstoppableonslaught"
     ],
     "icon": {
-        "item": "minecraft:crossbow"
+        "item": "minecraft:iron_axe"
     },
     "order": 5,
     "impact": 3
