@@ -1,0 +1,24 @@
+{
+    "name": "Summon mount",
+    "description": "You summon your fellow companion john the horse",
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "kill @e[type=horse,tag=john]"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "summon horse ~ ~ ~ {CustomNameVisible:1b,PersistenceRequired:0b,Bred:1b,Tame:1b,Variant:260,Tags:[\"john\"],CustomName:'{\"text\":\"John\",\"color\":\"dark_red\",\"bold\":true}',ActiveEffects:[{Id:11,Amplifier:3b,Duration:19999980,ShowParticles:0b},{Id:1,Amplifier:10b,Duration:19999980,ShowParticles:0b}],SaddleItem:{id:\"minecraft:saddle\",Count:1b},ArmorItem:{id:\"minecraft:iron_horse_armor\",Count:1b}}"
+            }
+        ]
+    },
+    "cooldown": 3600,
+    "hud_render": {
+        "should_render": true,
+        "bar_index": 2
+    },
+    "key": "primary"
+}
