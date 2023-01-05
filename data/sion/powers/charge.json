@@ -1,0 +1,11 @@
+{
+    "type": "origins:multiple",
+    "decrease": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:set_on_fire",
+            "duration": 4
+        },
+        "interval": 1
+    }
+}

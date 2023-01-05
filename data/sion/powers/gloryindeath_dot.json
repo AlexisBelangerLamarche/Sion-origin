@@ -25,6 +25,12 @@
             "type": "origins:heal",
             "amount": 4.0
         },
-        "cooldown": 1
+        "cooldown": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "sion:gloryindeath_resource",
+            "comparison": "==",
+            "compare_to": 1
+        }
     }
 }

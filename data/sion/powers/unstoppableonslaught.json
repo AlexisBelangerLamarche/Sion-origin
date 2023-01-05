@@ -1,0 +1,151 @@
+{
+    "name": "Unstoppable Onslaught",
+    "description": "Start charging at an incredible speed, clearing block around you and killing anything that stands in your way",
+    "type": "origins:multiple",
+    "resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "active": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_resource",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_resource",
+                                "change": 100
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:entity.wither.spawn master @a ~ ~ ~"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 1200,
+        "key": {
+            "key": "primary"
+        },
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+            "bar_index": 4
+        }
+    },
+    "drain": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_resource",
+            "change": -1
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "charge": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:add_velocity",
+            "z": 1,
+            "space": "local_horizontal",
+            "set": true
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "blockdestroying": {
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "fill ~1 ~1 ~1 ~-1 ~ ~-1 air destroy"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "setblock ~ ~-1 ~ netherrack replace"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "setblock ^-1 ^-1 ^ netherrack replace"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "setblock ^1 ^-1 ^ netherrack replace"
+                },
+                {
+                    
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:crimson_spore ~ ~ ~ 1 0.5 1 0 50 force"
+                    
+                },
+                {
+                    "type": "origins:raycast",
+                    "distance": 1,
+                    "block": false,
+                    "entity": true,
+                    "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:execute_command",
+                            "command": "effect @s slowness 2 255"
+                        }
+                    },
+                    "hit_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:explode",
+                                "power": 5,
+                                "destruction_type": "none",
+                                "damage_self": false,
+                                "create_fire": true
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_resource",
+                                "change": -100
+                            }
+                        ]
+                    }
+                }
+
+            ]
+        },
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    }
+}
