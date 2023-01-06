@@ -7,7 +7,8 @@
         "sion:gloryindeath_reset",
         "sion:gloryindeath_dot",
         "sion:decimatingsmash",
-        "sion:unstoppableonslaught"
+        "sion:unstoppableonslaught",
+        "sion:soulfurnace"
     ],
     "icon": {
         "item": "minecraft:iron_axe"

@@ -1,0 +1,12 @@
+{
+    "name": "Soul Furnace",
+    "description": "Killing grants you half a heart permenantly until death.",
+    "type": "origins:multiple",
+    "addhealth": {
+        "type": "origins:self_action_on_kill",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "scale add pehkui:health 0.05 @s"
+        }
+    }
+}

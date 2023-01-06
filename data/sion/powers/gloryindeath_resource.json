@@ -11,7 +11,7 @@
         "actions": [
             {
                 "type": "origins:heal",
-                "amount": 20
+                "amount": 999999999
             },
             {
                 "type": "origins:apply_effect",
